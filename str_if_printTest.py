@@ -1,20 +1,42 @@
-# standard library (표준 라이브러리)
-# 1. math 모듈
-import math
+def solution(code):
+    answer = ''
+    
+    mode = 0 # mode는 시작할 때 0
+    ret = ''
+    
+    idx = 0
+    
+    for i in code :
 
-print(math.log10(100))
-print(math.cos(0))
-print(math.pi) # 변수 또한 호출가능
-
-# 2. random 모듈
-import random
-
-# 0.0과 1.0 사이의 랜덤 수가 리턴됨 
-print(random.random())
-
-# 3. os 모듈
-import os
-# 로그인 계정
-print(os.getlogin())
-# 설치 파일 경로
-print(os.getcwd())
+        # mode가 0일 때
+        # code[idx]가 "1"이 아니면 idx가 짝수일 때만 ret의 맨 뒤에 code[idx]를 추가합니다.
+        # code[idx]가 "1"이면 mode를 0에서 1로 바꿉니다.
+        
+        if mode == 0 :
+            if code[idx] != '1' :
+                if idx % 2 == 0 :
+                    ret += code[idx]
+            elif code[idx] == '1' :
+                mode = 1
+                
+        # mode가 1일 때
+        # code[idx]가 "1"이 아니면 idx가 홀수일 때만 ret의 맨 뒤에 code[idx]를 추가합니다.
+        # code[idx]가 "1"이면 mode를 1에서 0으로 바꿉니다.        
+        elif mode == 1 : 
+            if code[idx] != '1' :
+                if idx % 2 == 1 :
+                    ret += code[idx]
+            elif code[idx] == '1' :
+                mode = 0
+                
+        idx += 1
+    
+    # return 하려는 ret가 만약 빈 문자열이라면 
+    # 대신 "EMPTY"를 return 합니다.
+    if ret == '' :
+        answer = 'EMPTY'
+    else :
+        answer = ret
+        
+    return answer
+   
