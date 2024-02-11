@@ -2,20 +2,20 @@ def solution(a, b, c, d):
     answer = 0
     
     # 네 주사위에서 나온 숫자가 모두 p로 같다면
-    if (a == b) and (a == c) and (a == d) :
+    if (a == b) and (a == c) and (a == d) and (b == c) and (b == d) and (c == d):
         answer = 1111 * a
     # 세 주사위에서 나온 숫자가 p로 같고 나머지 다른 주사위에서 나온 숫자가 q(p ≠ q)라면
     # a, b, c 가 같고 d 만 다르다
-    elif ((a == b) and (a == c) and (a != d)) :
+    elif ((a == b) and (a == c) and (b == c) and (a != d)) :
         answer = (10 * a + d) ** 2
     # a, b, d 가 같고 c 만 다르다
-    elif ((a == b) and (a == d) and (a != c)) :
+    elif ((a == b) and (a == d) and (b == d) and (a != c)) :
         answer = (10 * a + c) ** 2
     # a, c, d 가 같고 b 만 다르다
-    elif ((a == c) and (a == d) and (a != b)) :
+    elif ((a == c) and (a == d) and (c == d) and (a != b)) :
         answer = (10 * a + b) ** 2
     # b, c, d 가 같고 a 만 다르다
-    elif ((b == c) and (b == d) and (b != a)) :
+    elif ((b == c) and (b == d) and (c == d) and (b != a)) :
         answer = (10 * b + a) ** 2
         
      
@@ -35,6 +35,14 @@ def solution(a, b, c, d):
         # b, d가 다를 때
         else :
             answer = b * d
+    # a, d 가 같다
+    elif (a == d) and (a != b) and (a != c) :
+        # b, c가 같을 때
+        if b == c :
+            answer = (a + b) * abs(a - b) 
+        # b, c가 다를 때
+        else :
+            answer = b * c        
     # b, c 가 같다
     elif (b == c) and (b != a) and (b != d) :
         # a, d가 같을 때
@@ -56,7 +64,7 @@ def solution(a, b, c, d):
         # a, b가 같을 때
         if a == b :
             answer = (a + c) * abs(a - c)  
-        # c, d가 다를 때
+        # a, b가 다를 때
         else :
             answer = a * b
         
