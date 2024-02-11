@@ -1,12 +1,8 @@
 def solution(my_string, queries):
     answer = ''
     reverse_string = ''
-    i = 0
-    j = 0
-    k = 0
-    l = 0
-    m = 0
-    
+    i, j, k, l = 0, 0, 0, 0
+
     while i < len(queries) :
          
         answer = ''
@@ -23,10 +19,10 @@ def solution(my_string, queries):
         # reverse_string 변수에 담긴 string을 뒤집어 answer변수에 담는다
         answer += reverse_string[::-1]
         # queries[i][1]+1 인덱스부터의 string를 뒤에 이어서 담는다  
-        m = queries[i][1]+1
-        while m < len(my_string) :
-            answer += my_string[m]
-            m += 1
+        l = queries[i][1]+1
+        while l < len(my_string) :
+            answer += my_string[l]
+            l += 1
         
         k = 0
         reverse_string = ''
